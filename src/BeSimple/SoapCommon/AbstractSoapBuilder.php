@@ -237,6 +237,13 @@ abstract class AbstractSoapBuilder
         return $this;
     }
 
+    public function withNTLMHttpAuth()
+    {
+        $this->soapOptions['extra_options']['http_auth'] = CURLAUTH_NTLM;
+
+        return $this;
+    }
+
     protected function validateWsdl()
     {
         if (null === $this->wsdl) {
