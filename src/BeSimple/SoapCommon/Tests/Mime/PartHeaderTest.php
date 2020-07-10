@@ -10,7 +10,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace BeSimple\SoapCommon\Tests;
+namespace BeSimple\SoapCommon\Tests\Mime;
 
 use BeSimple\SoapCommon\Mime\PartHeader;
 use BeSimple\SoapCommon\Tests\Fixtures\MimePartHeader;
