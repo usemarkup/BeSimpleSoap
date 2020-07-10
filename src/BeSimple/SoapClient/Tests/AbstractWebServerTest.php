@@ -13,7 +13,7 @@
 namespace BeSimple\SoapClient\Tests;
 
 use Symfony\Component\Process\PhpExecutableFinder;
-use Symfony\Component\Process\ProcessBuilder;
+use Symfony\Component\Process\Process;
 
 /**
  * @author francis.besset@gmail.com <francis.besset@gmail.com>
@@ -21,7 +21,7 @@ use Symfony\Component\Process\ProcessBuilder;
 abstract class AbstractWebServerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var ProcessBuilder
+     * @var Process
      */
     static protected $webserver;
     static protected $websererPortLength;
@@ -33,14 +33,16 @@ abstract class AbstractWebServerTest extends \PHPUnit_Framework_TestCase
         }
 
         $phpFinder = new PhpExecutableFinder();
-        self::$webserver = ProcessBuilder::create(array(
-            'exec', // used exec binary (https://github.com/symfony/symfony/issues/5759)
-            $phpFinder->find(),
-            '-S',
-            sprintf('localhost:%d', WEBSERVER_PORT),
-            '-t',
-            __DIR__.DIRECTORY_SEPARATOR.'Fixtures',
-        ))->getProcess();
+
+        self::$webserver = new Process(
+            [
+                $phpFinder->find(),
+                '-S',
+                sprintf('localhost:%d', WEBSERVER_PORT),
+                '-t',
+                __DIR__.DIRECTORY_SEPARATOR.'Fixtures',
+            ]
+        );
 
         self::$webserver->start();
         usleep(100000);
