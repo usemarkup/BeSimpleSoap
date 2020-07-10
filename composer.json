@@ -39,7 +39,8 @@
         "ext-mcrypt": "*",
         "mikey179/vfsstream": "^1.6.5",
         "symfony/filesystem": "^3|^4",
-        "symfony/process": "^3|^4"
+        "symfony/process": "^3|^4",
+        "phpunit/phpunit": "^5"
     },
     "autoload": {
         "psr-0": { "BeSimple\\": "src/" }

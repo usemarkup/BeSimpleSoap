@@ -18,4 +18,4 @@ before_script:
   - ./src/BeSimple/SoapClient/Tests/bin/axis.sh
 
 script:
-  - phpunit --coverage-text
+  - vendor/bin/phpunit --coverage-text
